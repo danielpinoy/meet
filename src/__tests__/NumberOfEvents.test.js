@@ -45,7 +45,7 @@ describe("<NumberOfEvents /> component", () => {
         const applyButton = queryByRole("button", {
             name: "Apply",
         });
-        user.click(applyButton);
+        await user.click(applyButton);
 
         expect(inputField.value).toBe("5");
     });
