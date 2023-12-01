@@ -1,6 +1,10 @@
 import { useState } from "react";
-const NumberOfEvents = () => {
-    const [numberOfEvents, setNumberOfEvents] = useState("10");
+const NumberOfEvents = ({ setCurrentNOE }) => {
+    const [numberOfEvents, setNumberOfEvents] = useState("0");
+    const handleItemClick = () => {
+        setCurrentNOE(numberOfEvents);
+        setNumberOfEvents("");
+    };
 
     return (
         <div id="number-of-events">
@@ -11,7 +15,9 @@ const NumberOfEvents = () => {
                 value={numberOfEvents}
                 onChange={(e) => setNumberOfEvents(e.target.value)}
             />
-            <button className="">Apply</button>
+            <button className="button" onClick={handleItemClick}>
+                Apply
+            </button>
         </div>
     );
 };
