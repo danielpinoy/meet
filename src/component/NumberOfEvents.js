@@ -15,7 +15,7 @@ const NumberOfEvents = ({ setCurrentNOE }) => {
                 value={numberOfEvents}
                 onChange={(e) => setNumberOfEvents(e.target.value)}
             />
-            <button className="button" onClick={handleItemClick}>
+            <button className="btnSubmit" onClick={handleItemClick}>
                 Apply
             </button>
         </div>

@@ -13,7 +13,7 @@ export default function App() {
     useEffect(() => {
         fetchData();
     }, [currentCity, currentNOE]);
-
+    console.log("deployed");
     const fetchData = async () => {
         const allEvents = await getEvents();
         const filteredEvents =
