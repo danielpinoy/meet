@@ -1,9 +1,16 @@
 import { useState } from "react";
 const NumberOfEvents = ({ setCurrentNOE }) => {
     const [numberOfEvents, setNumberOfEvents] = useState("0");
+    const [error, setError] = useState("");
+
     const handleItemClick = () => {
-        setCurrentNOE(numberOfEvents);
-        setNumberOfEvents("");
+        if (isNaN(numberOfEvents) || numberOfEvents <= 0) {
+            setError("Please enter a valid positive number.");
+        } else {
+            setCurrentNOE(numberOfEvents);
+            setNumberOfEvents("");
+            setError("");
+        }
     };
 
     return (
@@ -18,6 +25,7 @@ const NumberOfEvents = ({ setCurrentNOE }) => {
             <button className="btnSubmit" onClick={handleItemClick}>
                 Apply
             </button>
+            {error && <div className="error-message">{error}</div>}
         </div>
     );
 };

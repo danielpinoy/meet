@@ -5,7 +5,6 @@ const Event = ({ event }) => {
     const [openDescription, setOpenDescription] = useState(false);
     const options = { year: "numeric", month: "long", day: "numeric" };
     const readableDate = isoDate.toLocaleString(undefined, options);
-
     const toggleDescription = () => {
         setOpenDescription(!openDescription);
     };
@@ -17,9 +16,13 @@ const Event = ({ event }) => {
                 <div>{event.location}</div>
             </div>
             {!openDescription ? (
-                <button onClick={toggleDescription}>Show Details</button>
+                <button className="details-btn" onClick={toggleDescription}>
+                    Show Details
+                </button>
             ) : (
-                <button onClick={toggleDescription}>Hide Details</button>
+                <button className="details-btn" onClick={toggleDescription}>
+                    Hide Details
+                </button>
             )}
             {openDescription && <div className="show-details">{event.description}</div>}
         </li>
