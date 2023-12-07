@@ -1,16 +1,21 @@
 import { useState } from "react";
-const NumberOfEvents = ({ setCurrentNOE }) => {
-    const [numberOfEvents, setNumberOfEvents] = useState("0");
-    const [error, setError] = useState("");
+const NumberOfEvents = ({ setCurrentNOE, setErrorAlert }) => {
+    const [numberOfEvents, setNumberOfEvents] = useState("");
 
-    const handleItemClick = () => {
-        if (isNaN(numberOfEvents) || numberOfEvents <= 0) {
-            setError("Please enter a valid positive number.");
+    const handleInputChanged = (event) => {
+        const value = event.target.value;
+        setNumberOfEvents(value);
+
+        if (isNaN(value) || parseInt(value) < 0) {
+            setErrorAlert("Please enter a valid positive number.");
         } else {
-            setCurrentNOE(numberOfEvents);
-            setNumberOfEvents("");
-            setError("");
+            setErrorAlert("");
         }
+    };
+    const handleItemClick = () => {
+        setCurrentNOE(numberOfEvents);
+
+        setNumberOfEvents("");
     };
 
     return (
@@ -20,12 +25,15 @@ const NumberOfEvents = ({ setCurrentNOE }) => {
                 type="text"
                 className="event-input"
                 value={numberOfEvents}
-                onChange={(e) => setNumberOfEvents(e.target.value)}
+                onChange={handleInputChanged}
             />
-            <button className="btnSubmit" onClick={handleItemClick}>
-                Apply
-            </button>
-            {error && <div className="error-message">{error}</div>}
+            {isNaN(numberOfEvents) || parseInt(numberOfEvents) < 0 ? (
+                <button className="btnError">Locked</button>
+            ) : (
+                <button className="btnSubmit" onClick={handleItemClick}>
+                    Apply
+                </button>
+            )}
         </div>
     );
 };

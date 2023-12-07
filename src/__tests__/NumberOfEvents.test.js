@@ -6,7 +6,9 @@ import App from "../App";
 describe("<NumberOfEvents /> component", () => {
     let NumberOfEventsComponent;
     beforeEach(() => {
-        NumberOfEventsComponent = render(<NumberOfEvents setCurrentNOE={() => {}} />);
+        NumberOfEventsComponent = render(
+            <NumberOfEvents setCurrentNOE={() => {}} setErrorAlert={() => {}} />
+        );
     });
     test("main event page heading", () => {
         const h1Element = NumberOfEventsComponent.queryByRole("heading", { level: 1 });
