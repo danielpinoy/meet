@@ -54,4 +54,4 @@ class WarningAlert extends Alert {
         this.bgColor = "rgb(255,255,255)";
     }
 }
-export { InfoAlert, ErrorAlert };
+export { InfoAlert, ErrorAlert, WarningAlert };
