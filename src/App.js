@@ -38,6 +38,8 @@ export default function App() {
         setAllLocations(extractLocations(allEvents));
         console.log("checked");
     };
+    console.log("checked");
+
     return (
         <>
             {!events && !allLocations ? (
