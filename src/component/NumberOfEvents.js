@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 const NumberOfEvents = ({ setCurrentNOE, setErrorAlert }) => {
     const [numberOfEvents, setNumberOfEvents] = useState("");
 
@@ -21,11 +22,14 @@ const NumberOfEvents = ({ setCurrentNOE, setErrorAlert }) => {
     return (
         <div id="number-of-events">
             <h1>Main Event Page</h1>
+
             <input
                 type="text"
+                id="numberOfEvents"
                 className="event-input"
                 value={numberOfEvents}
                 onChange={handleInputChanged}
+                placeholder="Number of Events"
             />
             {isNaN(numberOfEvents) || parseInt(numberOfEvents) < 0 ? (
                 <button className="btnError">Locked</button>

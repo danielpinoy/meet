@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
+
 .App {
   text-align: center;
   padding: 2% 5%;
@@ -100,7 +101,7 @@ align-items: center;
 
 .btnSubmit {
 	display: inline-block;
-	padding: 9px 20px;
+	padding: 9px 10px;
 	font-size: 16px;
 	font-weight: bold;
 	text-align: center;
@@ -113,7 +114,7 @@ align-items: center;
 	transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 .btnError{display: inline-block;
-	padding: 9px 20px;
+	padding: 9px 10px;
 	font-size: 16px;
 	font-weight: bold;
 	text-align: center;
@@ -144,4 +145,53 @@ align-items: center;
   left: 20px;
   width: 250px;
   z-index: 1000;
+}
+
+.charts-container {
+  display:grid;
+	grid-template-columns: 1fr 1fr
+}
+
+@media (max-width: 768px){
+	.charts-container{
+			grid-template-columns: 1fr
+	}
+}
+
+
+/* CSS Loader*/
+
+.loader-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Adjust this based on your layout */
+}
+
+.loader {
+	width: 48px;
+	height: 48px;
+	display: inline-block;
+	position: relative;
+	border: 3px solid;
+	border-color:#de3500 #0000 #000000 #0000;
+	border-radius: 50%;
+	box-sizing: border-box;
+	animation: 1s rotate linear infinite;
+}
+.loader:before , .loader:after{
+	content: '';
+	top: 0;
+	left: 0;
+	position: absolute;
+	border: 10px solid transparent;
+	border-bottom-color:#000000;
+	transform: translate(-10px, 19px) rotate(-35deg);
+}
+.loader:after {
+	border-color: #de3500 #0000 #0000 #0000 ;
+	transform: translate(32px, 3px) rotate(-35deg);
+}
+ @keyframes rotate {
+	100%{    transform: rotate(360deg)}
 }
