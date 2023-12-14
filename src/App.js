@@ -1,5 +1,4 @@
-import "./App.css";
-
+import "./minified/AppMinifier.css";
 import { useState, useEffect } from "react";
 import EventList from "./component/EventList";
 import CitySearch from "./component/CitySearch";
@@ -17,8 +16,7 @@ export default function App() {
     const [infoAlert, setInfoAlert] = useState("");
     const [errorAlert, setErrorAlert] = useState("");
     const [warningAlert, setWarningAlert] = useState("");
-    // const [loading, setLoading] = useState(true);
-
+    const [loading, setLoading] = useState();
     useEffect(() => {
         if (navigator.onLine) {
             setWarningAlert("");
@@ -29,20 +27,17 @@ export default function App() {
     }, [currentCity, currentNOE]);
 
     const fetchData = async () => {
-        const allEvents = await getEvents();
+        const allEvents = await getEvents(setLoading);
         const filteredEvents =
             currentCity === "See all cities"
                 ? allEvents
                 : allEvents.filter((event) => event.location === currentCity);
         setEvents(filteredEvents.slice(0, currentNOE));
         setAllLocations(extractLocations(allEvents));
-        console.log("checked1");
     };
-    console.log("checked2");
-
     return (
         <>
-            {!events && !allLocations ? (
+            {loading ? (
                 <div className="loader-container">
                     <span className="loader"></span>
                 </div>

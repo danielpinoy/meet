@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [query, setQuery] = useState("");
     const [suggestions, setSuggestions] = useState([]);
+    const inputRef = useRef(null);
 
     const handleInputChanged = (event) => {
         const value = event.target.value;
@@ -27,17 +28,27 @@ const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
     const handleItemClick = (event) => {
         const value = event.target.textContent;
         setQuery(value);
-        setShowSuggestions(false); // to hide list
+        setShowSuggestions(false);
         setCurrentCity(value);
         setInfoAlert("");
     };
+
+    const handleClickOutside = (event) => {
+        if (inputRef.current && !inputRef.current.contains(event.target)) {
+            setShowSuggestions(false);
+        }
+    };
     useEffect(() => {
         setSuggestions(allLocations);
-    }, [`${allLocations}`]);
-
+        document.addEventListener("click", handleClickOutside);
+        return () => {
+            document.removeEventListener("click", handleClickOutside);
+        };
+    }, [allLocations]);
     return (
         <div id="city-search">
             <input
+                ref={inputRef}
                 type="text"
                 className="city"
                 placeholder="Search for a city"

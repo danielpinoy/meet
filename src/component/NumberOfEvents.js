@@ -21,7 +21,7 @@ const NumberOfEvents = ({ setCurrentNOE, setErrorAlert }) => {
 
     return (
         <div id="number-of-events">
-            <h1>Main Event Page</h1>
+            <h1 className="header-title">Meet Up</h1>
 
             <input
                 type="text"

@@ -17,7 +17,7 @@ export const extractLocations = (events) => {
  *
  * This function will fetch the list of all events
  */
-export const getEvents = async () => {
+export const getEvents = async (setLoading) => {
     if (window.location.href.startsWith("http://localhost")) {
         return mockData;
     }
@@ -27,25 +27,32 @@ export const getEvents = async () => {
         // NProgress.done();
         return events ? JSON.parse(events) : [];
     }
-    const token = await getAccessToken();
+    setLoading(true);
 
-    if (token) {
-        removeQuery();
-        const url =
-            "https://t9wcp82whh.execute-api.ap-southeast-1.amazonaws.com/dev/api/get-events" +
-            "/" +
-            token;
-        const response = await fetch(url);
-        const result = await response.json();
-
-        if (result) {
+    try {
+        const token = await getAccessToken();
+        if (token) {
+            removeQuery();
+            const url =
+                "https://t9wcp82whh.execute-api.ap-southeast-1.amazonaws.com/dev/api/get-events" +
+                "/" +
+                token;
             const response = await fetch(url);
             const result = await response.json();
+
             if (result) {
-                localStorage.setItem("lastEvents", JSON.stringify(result.events));
-                return result.events;
-            } else return null;
+                const response = await fetch(url);
+                const result = await response.json();
+                if (result) {
+                    localStorage.setItem("lastEvents", JSON.stringify(result.events));
+                    return result.events;
+                } else return null;
+            }
         }
+    } catch (error) {
+        console.error("Error fetching events:", error);
+    } finally {
+        setLoading(false);
     }
 };
 

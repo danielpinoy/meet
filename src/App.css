@@ -69,13 +69,29 @@ input[type="number"] {
   background-color: #bcdcdb;
 }
 
-/* #event-list{
-	display: flex;
-	flex-direction: column;
-align-items: center;
 
+.header-title{ 
+	 text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #FF3D00 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  font-size: 50px;
 
-} */
+}
+
 .event {
 	display: flex;
 	align-items: center;
@@ -169,29 +185,29 @@ align-items: center;
 }
 
 .loader {
-	width: 48px;
-	height: 48px;
-	display: inline-block;
-	position: relative;
-	border: 3px solid;
-	border-color:#de3500 #0000 #000000 #0000;
-	border-radius: 50%;
-	box-sizing: border-box;
-	animation: 1s rotate linear infinite;
+  position: relative;
+  width: 350px;
+  height: 350px;
 }
+
 .loader:before , .loader:after{
-	content: '';
-	top: 0;
-	left: 0;
-	position: absolute;
-	border: 10px solid transparent;
-	border-bottom-color:#000000;
-	transform: translate(-10px, 19px) rotate(-35deg);
+  content: '';
+  border-radius: 50%;
+  position: absolute;
+  inset: 0;
+  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.3) inset;
 }
 .loader:after {
-	border-color: #de3500 #0000 #0000 #0000 ;
-	transform: translate(32px, 3px) rotate(-35deg);
+  box-shadow: 0 3px 0 #FF3D00 inset;
+  animation: rotate 2s linear infinite;
 }
- @keyframes rotate {
-	100%{    transform: rotate(360deg)}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+@keyframes rotate {
+  0% {  transform: rotate(0)}
+  100% { transform: rotate(360deg)}
 }
