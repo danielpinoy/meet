@@ -1,12 +1,20 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
 
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 .App {
   text-align: center;
   padding: 2% 5%;
 }
 
 .App * {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 ul {
@@ -26,7 +34,9 @@ input[type="number"] {
   border: 1px solid #ccc;
   font-size: 14px;
   line-height: 20px;
-  align-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
   height: 38px;
   margin-bottom: 20px;
 }
@@ -36,8 +46,13 @@ input[type="number"] {
 }
 
 #city-search {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   margin: auto;
   position: relative;
 }
@@ -47,10 +62,13 @@ input[type="number"] {
   position: absolute;
   top: 45px;
   z-index: 2;
-  align-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
   margin: 0;
   font-size: 14px;
-  box-shadow: 10px 10px 16px -12px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 10px 10px 16px -12px rgba(0, 0, 0, 0.75);
+          box-shadow: 10px 10px 16px -12px rgba(0, 0, 0, 0.75);
 }
 
 .suggestions > li {
@@ -72,6 +90,13 @@ input[type="number"] {
 
 .header-title{ 
 	 text-transform: uppercase;
+  background-image: -o-linear-gradient(
+    315deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #FF3D00 100%
+  );
   background-image: linear-gradient(
     -225deg,
     #231557 0%,
@@ -87,16 +112,24 @@ input[type="number"] {
   text-fill-color: transparent;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: textclip 2s linear infinite;
+  -webkit-animation: textclip 2s linear infinite;
+          animation: textclip 2s linear infinite;
   font-size: 50px;
 
 }
 
 .event {
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	align-items: center;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
 	justify-items: center;
-	flex-direction: column;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
 	padding: 20px 20px 45px; /* Adjusted padding */
 	margin-bottom: 5px; /* Adjusted margin */
   border: 1px solid #ccc;
@@ -127,6 +160,8 @@ input[type="number"] {
 	color: #4caf50;
 	background-color: #ffffff; 
 	border-radius: 5px;
+	-webkit-transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+	-o-transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 	transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 .btnError{display: inline-block;
@@ -140,6 +175,8 @@ input[type="number"] {
 	color: #ffffff;
 	background-color: #000000; 
 	border-radius: 5px;
+	-webkit-transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+	-o-transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 	transition: background-color 0.3s, color 0.3s, border-color 0.3s;}
 
 .btnSubmit:hover {
@@ -164,12 +201,15 @@ input[type="number"] {
 }
 
 .charts-container {
+  display:-ms-grid;
   display:grid;
+	-ms-grid-columns: 1fr 1fr;
 	grid-template-columns: 1fr 1fr
 }
 
 @media (max-width: 768px){
 	.charts-container{
+			-ms-grid-columns: 1fr;
 			grid-template-columns: 1fr
 	}
 }
@@ -178,9 +218,15 @@ input[type="number"] {
 /* CSS Loader*/
 
 .loader-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   height: 100vh; /* Adjust this based on your layout */
 }
 
@@ -195,11 +241,20 @@ input[type="number"] {
   border-radius: 50%;
   position: absolute;
   inset: 0;
-  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.3) inset;
+  -webkit-box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.3) inset;
+          box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.3) inset;
 }
 .loader:after {
-  box-shadow: 0 3px 0 #FF3D00 inset;
-  animation: rotate 2s linear infinite;
+  -webkit-box-shadow: 0 3px 0 #FF3D00 inset;
+          box-shadow: 0 3px 0 #FF3D00 inset;
+  -webkit-animation: rotate 2s linear infinite;
+          animation: rotate 2s linear infinite;
+}
+
+@-webkit-keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
 }
 
 @keyframes textclip {
@@ -207,7 +262,11 @@ input[type="number"] {
     background-position: 200% center;
   }
 }
+@-webkit-keyframes rotate {
+  0% {  -webkit-transform: rotate(0);  transform: rotate(0)}
+  100% { -webkit-transform: rotate(360deg); transform: rotate(360deg)}
+}
 @keyframes rotate {
-  0% {  transform: rotate(0)}
-  100% { transform: rotate(360deg)}
+  0% {  -webkit-transform: rotate(0);  transform: rotate(0)}
+  100% { -webkit-transform: rotate(360deg); transform: rotate(360deg)}
 }
