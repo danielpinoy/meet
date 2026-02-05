@@ -5,9 +5,8 @@ import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 import * as atatus from "atatus-spa";
-if (process.env.REACT_APP_ATATUS_KEY) {
-  atatus.config(process.env.REACT_APP_ATATUS_KEY).install();
-}
+atatus.config("83cdfd5d81d94cab8f747b30f8930994").install();
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
