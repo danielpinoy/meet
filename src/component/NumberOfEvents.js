@@ -1,45 +1,45 @@
 import { useState } from "react";
 
 const NumberOfEvents = ({ setCurrentNOE, setErrorAlert }) => {
-    const [numberOfEvents, setNumberOfEvents] = useState("");
+  const [numberOfEvents, setNumberOfEvents] = useState("");
 
-    const handleInputChanged = (event) => {
-        const value = event.target.value;
-        setNumberOfEvents(value);
+  const handleInputChanged = (event) => {
+    const value = event.target.value;
+    setNumberOfEvents(value);
 
-        if (isNaN(value) || parseInt(value) < 0) {
-            setErrorAlert("Please enter a valid positive number.");
-        } else {
-            setErrorAlert("");
-        }
-    };
-    const handleItemClick = () => {
-        setCurrentNOE(numberOfEvents);
+    if (isNaN(value) || parseInt(value) < 0) {
+      setErrorAlert("Please enter a valid positive number.");
+    } else {
+      setErrorAlert("");
+    }
+  };
+  const handleItemClick = () => {
+    setCurrentNOE(numberOfEvents);
 
-        setNumberOfEvents("");
-    };
+    setNumberOfEvents("");
+  };
 
-    return (
-        <div id="number-of-events">
-            <h1 className="header-title">Meet Up</h1>
+  return (
+    <div id="number-of-events">
+      <h1 className="header-title">Meet Upp</h1>
 
-            <input
-                type="text"
-                id="numberOfEvents"
-                className="event-input"
-                value={numberOfEvents}
-                onChange={handleInputChanged}
-                placeholder="Number of Events"
-            />
-            {isNaN(numberOfEvents) || parseInt(numberOfEvents) < 0 ? (
-                <button className="btnError">Locked</button>
-            ) : (
-                <button className="btnSubmit" onClick={handleItemClick}>
-                    Apply
-                </button>
-            )}
-        </div>
-    );
+      <input
+        type="text"
+        id="numberOfEvents"
+        className="event-input"
+        value={numberOfEvents}
+        onChange={handleInputChanged}
+        placeholder="Number of Events"
+      />
+      {isNaN(numberOfEvents) || parseInt(numberOfEvents) < 0 ? (
+        <button className="btnError">Locked</button>
+      ) : (
+        <button className="btnSubmit" onClick={handleItemClick}>
+          Apply
+        </button>
+      )}
+    </div>
+  );
 };
 
 export default NumberOfEvents;

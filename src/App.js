@@ -35,7 +35,7 @@ export default function App() {
         ? fetchedEvents
         : fetchedEvents.filter((event) => event.location === currentCity);
     setEvents(filteredEvents.slice(0, currentNOE));
-    setAllEvents(fetchedEvents); // ✅ FIXED: Store all events for charts
+    setAllEvents(fetchedEvents);
     setAllLocations(extractLocations(fetchedEvents));
   };
 
